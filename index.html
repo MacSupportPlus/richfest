@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>R.I.C.H. Fest — Chattanooga, TN</title>
+<meta name="description" content="R.I.C.H. Fest — Resilience, Inspiration, Culture, Healing. A three-day community festival in Chattanooga, TN from CT Rich Way Productions."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://richfest.org/"/>
+<meta property="og:title" content="R.I.C.H. Fest — Chattanooga, TN"/>
+<meta property="og:description" content="Resilience. Inspiration. Culture. Healing. Three days of community in Chattanooga."/>
+<meta property="og:image" content="https://richfest.org/ct_sign.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#060608"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23060608'/%3E%3Ctext x='32' y='48' font-family='Impact,sans-serif' font-size='44' text-anchor='middle' fill='%23E83C3C'%3ER%3C/text%3E%3Crect x='0' y='58' width='22' height='6' fill='%23CC1B1B'/%3E%3Crect x='22' y='58' width='20' height='6' fill='%23E8C010'/%3E%3Crect x='42' y='58' width='22' height='6' fill='%2328A844'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:       #060608;
+  --surface:  #0D0D10;
+  --surface2: #141418;
+  --red:      #CC1B1B;
+  --red-lt:   #E83C3C;
+  --yellow:   #E8C010;
+  --yellow-lt:#F5D340;
+  --green:    #1A7A2E;
+  --green-lt: #28A844;
+  --text:     #F2EDE4;
+  --muted:    #6E6A62;
+  --border:   rgba(232,192,16,0.15);
+  --line:     rgba(255,255,255,0.07);
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  line-height:1.7;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 5%; height:70px;
+  background: linear-gradient(to bottom, rgba(6,6,8,0.97) 0%, transparent 100%);
+  backdrop-filter: blur(4px);
+}
+.nav-logo {
+  display:flex; align-items:baseline; gap:0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size:1.7rem; letter-spacing:0.06em;
+  text-decoration:none;
+}
+.nav-logo .r { color:#E83C3C; }
+.nav-logo .dot1 { color:#F5D340; font-size:0.9em; }
+.nav-logo .i { color:#F5D340; }
+.nav-logo .dot2 { color:#28A844; font-size:0.9em; }
+.nav-logo .c { color:#28A844; }
+.nav-logo .dot3 { color:#E83C3C; font-size:0.9em; }
+.nav-logo .h { color:#E83C3C; }
+.nav-logo .fest { color:var(--text); margin-left:0.3em; font-size:1.5rem; }
+
+.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+.nav-links a {
+  color:var(--muted); text-decoration:none;
+  font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+  transition:color .2s;
+}
+.nav-links a:hover { color:var(--text); }
+.btn-tickets {
+  background:var(--red); color:#fff !important;
+  padding:0.5rem 1.4rem; border-radius:2px;
+  font-weight:500 !important; letter-spacing:0.08em !important;
+  transition:background .2s !important;
+}
+.btn-tickets:hover { background:var(--red-lt) !important; }
+
+/* ── HERO ── */
+.hero {
+  position:relative; min-height:100vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding: 0 5% 7%;
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background:
+    linear-gradient(to bottom, rgba(6,6,8,0.55) 0%, rgba(6,6,8,0.92) 70%, rgba(6,6,8,1) 100%),
+    url('ct_sign.jpg') center 30% / cover no-repeat;
+}
+/* subtle diagonal stripe overlay */
+.hero-bg::after {
+  content:''; position:absolute; inset:0;
+  background-image: repeating-linear-gradient(
+    -60deg, transparent, transparent 80px,
+    rgba(232,192,16,0.018) 80px, rgba(232,192,16,0.018) 81px
+  );
+}
+.hero-corner-r { position:absolute; top:80px; right:5%; font-family:'Bebas Neue',sans-serif; font-size:5rem; color:var(--red); opacity:0.06; line-height:1; }
+.hero-corner-g { position:absolute; top:130px; right:5%; font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--green); opacity:0.06; letter-spacing:0.2em; }
+
+.hero-eyebrow {
+  position:relative;
+  display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem;
+}
+.hero-eyebrow::before { content:''; width:36px; height:2px; background:var(--yellow); display:inline-block; }
+.hero-eyebrow span { font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--yellow); font-weight:500; }
+
+/* Big R.I.C.H. logo */
+.hero-rich {
+  position:relative;
+  font-family:'Bebas Neue', sans-serif;
+  font-size: clamp(7rem, 18vw, 15rem);
+  line-height:0.85;
+  letter-spacing:0.05em;
+  margin-bottom:0.1em;
+  display:flex; align-items:baseline; gap:0.02em;
+}
+.hero-rich .r { color:var(--red-lt); }
+.hero-rich .dot { font-size:0.4em; color:var(--yellow); margin:0 -0.05em; }
+.hero-rich .i { color:var(--yellow-lt); }
+.hero-rich .c { color:var(--green-lt); }
+.hero-rich .h { color:var(--red-lt); }
+
+.hero-fest {
+  position:relative;
+  font-family:'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 12vw, 10rem);
+  letter-spacing:0.22em;
+  color:var(--text);
+  line-height:1;
+  margin-bottom:0.6rem;
+  -webkit-text-stroke:1px rgba(255,255,255,0.12);
+}
+
+.hero-acronym {
+  position:relative;
+  display:flex; gap:2rem; flex-wrap:wrap;
+  margin-bottom:2rem;
+}
+.acronym-word { display:flex; flex-direction:column; }
+.acronym-letter { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.1em; }
+.acronym-word:nth-child(1) .acronym-letter { color:var(--red-lt); }
+.acronym-word:nth-child(2) .acronym-letter { color:var(--yellow-lt); }
+.acronym-word:nth-child(3) .acronym-letter { color:var(--green-lt); }
+.acronym-word:nth-child(4) .acronym-letter { color:var(--red-lt); }
+.acronym-full { font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-top:0.1rem; }
+
+.hero-meta {
+  position:relative;
+  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+  margin-bottom:2.5rem;
+}
+.pill {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  border:1px solid var(--border); border-radius:2px;
+  padding:0.4rem 1rem;
+  font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--yellow); font-weight:500;
+}
+.hero-ctas { position:relative; display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-primary {
+  display:inline-block; background:var(--red); color:#fff;
+  text-decoration:none; font-weight:500; font-size:0.82rem;
+  letter-spacing:0.14em; text-transform:uppercase;
+  padding:0.9rem 2.4rem; border-radius:2px;
+  transition:background .2s, transform .15s;
+}
+.btn-primary:hover { background:var(--red-lt); transform:translateY(-1px); }
+.btn-ghost {
+  display:inline-block; background:transparent; color:var(--text);
+  text-decoration:none; font-size:0.82rem; letter-spacing:0.14em;
+  text-transform:uppercase; padding:0.9rem 2rem; border-radius:2px;
+  border:1px solid rgba(255,255,255,0.15);
+  transition:border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color:var(--yellow); color:var(--yellow-lt); }
+
+.annual-badge {
+  position:absolute; top:90px; right:5%;
+  background:var(--red); color:#fff;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.4rem; line-height:1;
+  padding:0.8rem 1.2rem;
+  text-align:center;
+  transform:rotate(3deg);
+  border:3px solid var(--yellow);
+}
+.annual-badge small { display:block; font-size:0.8rem; letter-spacing:0.16em; font-family:'DM Sans',sans-serif; font-weight:500; }
+
+/* ── COMMON ── */
+section { padding:5rem 5%; }
+.section-eyebrow {
+  display:flex; align-items:center; gap:1rem; margin-bottom:0.8rem;
+}
+.section-eyebrow::before { content:''; width:28px; height:2px; background:var(--yellow); display:inline-block; }
+.section-eyebrow span { font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--yellow); font-weight:500; }
+.section-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6vw,5.5rem);
+  letter-spacing:0.06em; line-height:0.92; color:var(--text);
+  margin-bottom:0.5em;
+}
+
+/* ── ABOUT ── */
+.about { background:var(--surface); }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-top:3rem; align-items:start; }
+.about-copy p { color:var(--muted); font-size:1rem; line-height:1.85; margin-bottom:1.2rem; }
+.about-copy p strong { color:var(--text); font-weight:500; }
+.about-quote {
+  border-left:3px solid var(--yellow);
+  padding:1.2rem 1.5rem;
+  margin:2rem 0;
+  background:rgba(232,192,16,0.05);
+}
+.about-quote p { font-size:0.95rem; color:var(--text); font-style:italic; line-height:1.7; margin:0; }
+.about-quote cite { display:block; margin-top:0.6rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--yellow); font-style:normal; }
+
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.stat-card {
+  background:var(--bg); border:1px solid var(--line);
+  padding:1.4rem 1.5rem;
+  position:relative; overflow:hidden;
+}
+.stat-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:2px;
+}
+.stat-card.red::after { background:var(--red); }
+.stat-card.yellow::after { background:var(--yellow); }
+.stat-card.green::after { background:var(--green-lt); }
+.stat-num { font-family:'Bebas Neue',sans-serif; font-size:3rem; line-height:1; color:var(--text); letter-spacing:0.04em; }
+.stat-num.red { color:var(--red-lt); }
+.stat-num.yellow { color:var(--yellow-lt); }
+.stat-num.green { color:var(--green-lt); }
+.stat-label { font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:0.3rem; }
+
+/* ── SCHEDULE ── */
+.schedule { background:var(--bg); }
+.days-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5px; margin-top:3rem; }
+.day-card {
+  background:var(--surface); padding:2.5rem 2rem;
+  position:relative; transition:background .25s;
+  cursor:default;
+}
+.day-card:hover { background:var(--surface2); }
+.day-card.day1 { border-top:3px solid var(--red); }
+.day-card.day2 { border-top:3px solid var(--yellow); }
+.day-card.day3 { border-top:3px solid var(--green-lt); }
+.day-label {
+  font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+  margin-bottom:1rem; font-weight:500;
+}
+.day1 .day-label { color:var(--red); }
+.day2 .day-label { color:var(--yellow); }
+.day3 .day-label { color:var(--green-lt); }
+.day-date {
+  font-family:'Bebas Neue',sans-serif; font-size:4rem; line-height:0.9;
+  letter-spacing:0.04em; color:var(--text); margin-bottom:0.8rem;
+}
+.day-name {
+  font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  font-size:1.7rem; line-height:1.1; text-transform:uppercase;
+  letter-spacing:0.04em; color:var(--text); margin-bottom:0.5rem;
+}
+.day-venue { font-size:0.8rem; color:var(--muted); letter-spacing:0.06em; margin-bottom:0.2rem; }
+.day-time { font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.2rem; }
+.day1 .day-time { color:var(--red); }
+.day2 .day-time { color:var(--yellow); }
+.day3 .day-time { color:var(--green-lt); }
+.day-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
+.day-tag {
+  font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
+  padding:0.25rem 0.6rem; border-radius:1px;
+}
+.day1 .day-tag { border:1px solid rgba(204,27,27,0.35); color:var(--red-lt); }
+.day2 .day-tag { border:1px solid rgba(232,192,16,0.35); color:var(--yellow-lt); }
+.day3 .day-tag { border:1px solid rgba(26,122,46,0.35); color:var(--green-lt); }
+.performer {
+  margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--line);
+}
+.performer span { display:block; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:0.2rem; }
+.performer strong { font-family:'Barlow Condensed',sans-serif; font-size:1.3rem; font-weight:700; letter-spacing:0.08em; color:var(--text); }
+
+/* ── TICKETS ── */
+.tickets { background:var(--surface); }
+.tickets-header { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-bottom:3rem; }
+.ticket-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5px; }
+.ticket-card {
+  background:var(--bg); padding:2rem 2rem 1.8rem;
+  position:relative; border-bottom:1px solid var(--line);
+  transition:background .2s;
+}
+.ticket-card:hover { background:#0a0a0c; }
+.ticket-card.featured { border-bottom-color:var(--red); }
+.ticket-badge {
+  display:inline-block; font-size:0.62rem; letter-spacing:0.14em;
+  text-transform:uppercase; padding:0.2rem 0.7rem; margin-bottom:1.2rem; font-weight:500;
+}
+.ticket-badge.red { border:1px solid rgba(204,27,27,0.4); color:var(--red-lt); }
+.ticket-badge.yellow { border:1px solid rgba(232,192,16,0.4); color:var(--yellow-lt); }
+.ticket-badge.green { border:1px solid rgba(26,122,46,0.4); color:var(--green-lt); }
+.ticket-name { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.06em; color:var(--text); margin-bottom:0.3rem; }
+.ticket-event { font-size:0.78rem; color:var(--muted); letter-spacing:0.06em; margin-bottom:0.6rem; }
+.ticket-desc { font-size:0.87rem; color:var(--muted); line-height:1.7; margin-bottom:1.4rem; }
+.ticket-footer { display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--line); padding-top:1.2rem; }
+.ticket-price { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; line-height:1; }
+.ticket-price small { font-family:'DM Sans',sans-serif; display:block; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-top:0.2rem; }
+.ticket-card.featured .ticket-price { color:var(--red-lt); }
+.ticket-card:nth-child(2) .ticket-price { color:var(--yellow-lt); }
+.ticket-card:nth-child(3) .ticket-price { color:var(--green-lt); }
+.btn-buy {
+  display:inline-block; text-decoration:none; font-size:0.75rem;
+  letter-spacing:0.12em; text-transform:uppercase; font-weight:500;
+  padding:0.6rem 1.2rem; border-radius:1px;
+  transition:background .15s, color .15s;
+}
+.btn-buy.red { background:var(--red); color:#fff; }
+.btn-buy.red:hover { background:var(--red-lt); }
+.btn-buy.yellow { background:var(--yellow); color:#060608; }
+.btn-buy.yellow:hover { background:var(--yellow-lt); }
+.btn-buy.green { background:var(--green); color:#fff; }
+.btn-buy.green:hover { background:var(--green-lt); }
+/* Event has passed: ticket buttons are blocked out */
+.btn-buy.closed, .btn-buy.closed:hover {
+  background:transparent; color:var(--muted);
+  border:1px dashed rgba(255,255,255,0.18);
+  cursor:not-allowed; text-decoration:line-through; white-space:nowrap;
+}
+.ticket-card.past { opacity:0.55; }
+.ticket-card.past:hover { background:var(--bg); }
+.sold-stamp {
+  position:absolute; top:1.6rem; right:1.6rem;
+  font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.14em;
+  color:var(--muted); border:1px solid rgba(255,255,255,0.18);
+  padding:0.15rem 0.6rem; transform:rotate(4deg);
+}
+
+.ticket-note {
+  margin-top:2.5rem; padding:1.4rem 2rem;
+  background:rgba(232,192,16,0.05); border:1px solid rgba(232,192,16,0.15);
+  display:flex; align-items:flex-start; gap:1.2rem;
+}
+.ticket-note p { font-size:0.85rem; color:var(--muted); line-height:1.7; }
+.ticket-note p strong { color:var(--text); }
+.ticket-note a { color:var(--yellow-lt); }
+
+/* ── GALLERY ── */
+.gallery { background:var(--bg); }
+.gallery-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin-top:2.5rem; }
+.gallery-cell { overflow:hidden; background:var(--surface2); }
+.gallery-cell img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s; filter:brightness(0.88) saturate(0.9); }
+.gallery-cell:hover img { transform:scale(1.04); filter:brightness(1) saturate(1.1); }
+.g-wide { grid-column:span 7; aspect-ratio:16/10; }
+.g-tall { grid-column:span 5; position:relative; }
+.g-tall img { position:absolute; inset:0; }
+.g-sq   { grid-column:span 4; aspect-ratio:1; }
+.g-med  { grid-column:span 4; aspect-ratio:1; }
+.g-sm   { grid-column:span 4; aspect-ratio:1; }
+
+/* ── FOUNDER ── */
+.founder { background:var(--surface); }
+.founder-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin-top:3rem; }
+.founder-img { position:relative; }
+.founder-img img { width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 20%; }
+.founder-accent {
+  position:absolute; bottom:-12px; right:-12px;
+  width:80%; height:80%;
+  border:2px solid var(--red);
+  pointer-events:none; z-index:-1;
+}
+.founder-text {}
+.founder-name { font-family:'Bebas Neue',sans-serif; font-size:3rem; letter-spacing:0.08em; color:var(--text); line-height:1; margin-bottom:0.2rem; }
+.founder-title { font-size:0.75rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--yellow); margin-bottom:1.5rem; }
+.founder-bio { color:var(--muted); font-size:0.95rem; line-height:1.85; margin-bottom:1.5rem; }
+.founder-bio p { margin-bottom:1rem; }
+.founder-bio strong { color:var(--text); font-weight:500; }
+
+/* ── SOCIAL CTA ── */
+.social-strip {
+  background:var(--red);
+  padding:2.5rem 5%;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;
+}
+.social-strip h2 { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:0.08em; color:#fff; line-height:1; }
+.social-strip p { font-size:0.85rem; color:rgba(255,255,255,0.75); margin-top:0.2rem; }
+.social-strip a {
+  display:inline-block; background:#fff; color:var(--red);
+  text-decoration:none; font-weight:500; font-size:0.8rem;
+  letter-spacing:0.14em; text-transform:uppercase;
+  padding:0.8rem 2rem; border-radius:2px; white-space:nowrap;
+  transition:background .2s;
+}
+.social-strip a:hover { background:var(--yellow); color:#060608; }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--surface);
+  border-top:1px solid var(--line);
+  padding:4rem 5% 2.5rem;
+}
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+.footer-logo-block {}
+.footer-rich {
+  font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.06em;
+  display:flex; align-items:baseline; text-decoration:none;
+  margin-bottom:0.8rem;
+}
+.footer-rich .r  { color:var(--red-lt); }
+.footer-rich .dot { color:var(--yellow); font-size:0.75em; }
+.footer-rich .i  { color:var(--yellow-lt); }
+.footer-rich .c  { color:var(--green-lt); }
+.footer-rich .h  { color:var(--red-lt); }
+.footer-rich .fest { color:var(--text); margin-left:0.3em; font-size:1.7rem; }
+.footer-tagline { font-size:0.85rem; color:var(--muted); line-height:1.7; max-width:280px; }
+.footer-col-title { font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--yellow); margin-bottom:1.2rem; font-weight:500; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:0.6rem; }
+.footer-col a { color:var(--muted); text-decoration:none; font-size:0.87rem; transition:color .2s; }
+.footer-col a:hover { color:var(--text); }
+.footer-bottom {
+  border-top:1px solid var(--line); padding-top:1.5rem;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+}
+.footer-copy { font-size:0.76rem; color:var(--muted); }
+.footer-social { display:flex; gap:1.5rem; }
+.footer-social a { color:var(--muted); text-decoration:none; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; transition:color .2s; }
+.footer-social a:hover { color:var(--yellow-lt); }
+
+/* Color strips at very bottom */
+.color-bar { display:flex; height:5px; }
+.color-bar span { flex:1; }
+.color-bar .cb-r { background:var(--red); }
+.color-bar .cb-y { background:var(--yellow); }
+.color-bar .cb-g { background:var(--green-lt); }
+.color-bar .cb-b { background:var(--bg); flex:0.2; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  .days-grid { grid-template-columns:1fr; }
+  .about-grid, .founder-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+  .gallery-grid { grid-template-columns:repeat(6,1fr); }
+  .g-wide { grid-column:span 6; }
+  .g-wide { aspect-ratio:16/10; }
+  .g-tall { grid-column:span 6; aspect-ratio:16/10; }
+  .g-sq,.g-med,.g-sm { grid-column:span 3; }
+  .g-sm { grid-column:span 6; aspect-ratio:16/10; }
+}
+@media(max-width:600px) {
+  nav { padding:0 4%; }
+  .nav-links li { display:none; }
+  .nav-links li:last-child { display:block; }
+  .annual-badge { display:none; }
+  .hero { padding-top:96px; }
+  .sold-stamp { position:static; display:inline-block; margin:0 0 0.8rem 0.6rem; }
+  section { padding:4rem 4%; }
+  .hero { padding:0 4% 6rem; }
+  .hero-rich { font-size:clamp(5rem,22vw,9rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#home">
+    <span class="r">R</span><span class="dot1">.</span><span class="i">I</span><span class="dot2">.</span><span class="c">C</span><span class="dot3">.</span><span class="h">H</span><span class="fest">FEST</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Events</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="https://instagram.com/richfestchatt" target="_blank" rel="noopener" class="btn-tickets">Stay Updated</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="annual-badge">2ND<br>ANNUAL<small>2026</small></div>
+
+  <div class="hero-eyebrow">
+    <span>2nd Annual · That's a wrap, Chattanooga</span>
+  </div>
+
+  <div class="hero-rich">
+    <span class="r">R</span><span class="dot">.</span><span class="i">I</span><span class="dot">.</span><span class="c">C</span><span class="dot">.</span><span class="h">H</span>
+  </div>
+  <div class="hero-fest">FEST</div>
+
+  <div class="hero-acronym">
+    <div class="acronym-word">
+      <span class="acronym-letter">R</span>
+      <span class="acronym-full">Resilience</span>
+    </div>
+    <div class="acronym-word">
+      <span class="acronym-letter">I</span>
+      <span class="acronym-full">Inspiration</span>
+    </div>
+    <div class="acronym-word">
+      <span class="acronym-letter">C</span>
+      <span class="acronym-full">Culture</span>
+    </div>
+    <div class="acronym-word">
+      <span class="acronym-letter">H</span>
+      <span class="acronym-full">Healing</span>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <div class="pill">📍 Chattanooga, TN</div>
+    <div class="pill">🗓 June 16 – 18, 2026 · Complete</div>
+    <div class="pill">🎟 3 Days · 3 Events</div>
+  </div>
+
+  <div class="hero-ctas">
+    <a href="https://instagram.com/richfestchatt" target="_blank" rel="noopener" class="btn-primary">Get Next Year's Updates</a>
+    <a href="#gallery" class="btn-ghost">See the Highlights</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-eyebrow"><span>Our Mission</span></div>
+  <h2 class="section-title">More Than<br>A Festival</h2>
+
+  <div class="about-grid">
+    <div class="about-copy">
+      <p>
+        <strong>R.I.C.H. Fest is a movement.</strong> Founded by Richard Christopher (C.T.) Torregano, R.I.C.H. Fest was born from a simple belief — that our community deserves a celebration that gives back as much as it takes in.
+      </p>
+      <p>
+        Every year, across three days in Chattanooga, we bring together families, artists, musicians, and neighbors to celebrate our roots, our rhythm, and our rise. From wellness forums to field days to live performances, every moment at R.I.C.H. Fest is built around the four pillars that hold us together.
+      </p>
+      <div class="about-quote">
+        <p>"R.I.C.H. Fest is more than an event — it's a movement. We're celebrating our roots, our rhythm, and our rise. This is how we enRICH the culture, the community and each other."</p>
+        <cite>— C.T. Torregano, Founder</cite>
+      </div>
+      <a href="#schedule" class="btn-primary">See the 2026 Lineup</a>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card red">
+        <div class="stat-num red">2ND</div>
+        <div class="stat-label">Annual event — growing every year</div>
+      </div>
+      <div class="stat-card yellow">
+        <div class="stat-num yellow">3</div>
+        <div class="stat-label">Days of community events</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-num green">CHT</div>
+        <div class="stat-label">Proudly rooted in Chattanooga, TN</div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-num" style="color:var(--text)">100%</div>
+        <div class="stat-label">Community driven & culture focused</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="schedule">
+  <div class="section-eyebrow"><span>3-Day Schedule</span></div>
+  <h2 class="section-title">The 2026<br>Lineup</h2>
+
+  <div class="days-grid">
+    <!-- Day 1 -->
+    <div class="day-card day1">
+      <div class="day-label">Tuesday · Day 1</div>
+      <div class="day-date">JUN<br>16</div>
+      <div class="day-name">Family Wellness<br>Mental Health Forum</div>
+      <div class="day-venue">Rise Chattanooga · 2901 Taylor St</div>
+      <div class="day-time">5:00 PM – 8:00 PM</div>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">A healing space for families to connect, learn and grow together.</p>
+      <div class="day-tags">
+        <span class="day-tag">Mental Health</span>
+        <span class="day-tag">Family Support</span>
+        <span class="day-tag">Open Dialog</span>
+        <span class="day-tag">Resources</span>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card day2">
+      <div class="day-label">Wednesday · Day 2</div>
+      <div class="day-date">JUN<br>17</div>
+      <div class="day-name">Wild N Krazy<br>Wednesday</div>
+      <div class="day-venue">Dalewood Middle School · 1300 Shallowford Rd</div>
+      <div class="day-time">12:00 PM – 5:00 PM</div>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">A fun-filled field day for the kiddos! Come out and play.</p>
+      <div class="day-tags">
+        <span class="day-tag">Water Slides</span>
+        <span class="day-tag">Face Painting</span>
+        <span class="day-tag">Bounce Houses</span>
+        <span class="day-tag">Food Trucks</span>
+        <span class="day-tag">Games</span>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card day3">
+      <div class="day-label">Thursday · Day 3</div>
+      <div class="day-date">JUN<br>18</div>
+      <div class="day-name">Gemini Bash</div>
+      <div class="day-venue">Club Cabanas · 1800 Rossville Ave</div>
+      <div class="day-time">10:00 PM – 2:00 AM</div>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">The grand finale. VIP sections, drink specials, live music & birthday celebration.</p>
+      <div class="day-tags">
+        <span class="day-tag">VIP Sections</span>
+        <span class="day-tag">Drink Specials</span>
+        <span class="day-tag">Live Music</span>
+        <span class="day-tag">Birthday Celebration</span>
+      </div>
+      <div class="performer">
+        <span>Live Performance by</span>
+        <strong>Eddie Valero</strong>
+        <div style="font-size:0.7rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.08em;">@eddievalero_</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section class="tickets" id="tickets">
+  <div class="tickets-header">
+    <div>
+      <div class="section-eyebrow"><span>Tickets</span></div>
+      <h2 class="section-title">2026 Tickets<br>Are Closed</h2>
+    </div>
+    <p style="color:var(--muted);font-size:0.9rem;max-width:320px;line-height:1.7;">Thank you to everyone who came out. Ticket sales for the 2026 festival have ended — follow along for next year's dates.</p>
+  </div>
+
+  <div class="ticket-grid">
+    <div class="ticket-card featured past">
+      <span class="sold-stamp">Event Ended</span>
+      <div class="ticket-badge red">Day 1 — Mental Health Forum</div>
+      <div class="ticket-name">Family Wellness Ticket</div>
+      <div class="ticket-event">Tuesday, June 16 · Rise Chattanooga</div>
+      <p class="ticket-desc">General admission to the Family Wellness Mental Health Forum. Open dialogue, resources, and community connection.</p>
+      <div class="ticket-footer">
+        <div class="ticket-price">
+          FREE
+          <small>General admission</small>
+        </div>
+        <span class="btn-buy closed" aria-disabled="true" title="This event has ended">Sales Closed</span>
+      </div>
+    </div>
+
+    <div class="ticket-card past">
+      <span class="sold-stamp">Event Ended</span>
+      <div class="ticket-badge yellow">Day 2 — Field Day</div>
+      <div class="ticket-name">Wild N Krazy Pass</div>
+      <div class="ticket-event">Wednesday, June 17 · Dalewood Middle School</div>
+      <p class="ticket-desc">Full access to the kiddos field day — water slides, bounce houses, face painting, food trucks, and more.</p>
+      <div class="ticket-footer">
+        <div class="ticket-price">
+          FREE
+          <small>Per person / Family rate available</small>
+        </div>
+        <span class="btn-buy closed" aria-disabled="true" title="This event has ended">Sales Closed</span>
+      </div>
+    </div>
+
+    <div class="ticket-card past">
+      <span class="sold-stamp">Event Ended</span>
+      <div class="ticket-badge green">Day 3 — Gemini Bash</div>
+      <div class="ticket-name">Gemini Bash Entry</div>
+      <div class="ticket-event">Thursday, June 18 · Club Cabanas</div>
+      <p class="ticket-desc">General entry to the Gemini Bash. Live performance by Eddie Valero, drink specials, and birthday celebration.</p>
+      <div class="ticket-footer">
+        <div class="ticket-price">
+          $55
+          <small>General · VIP upgrade available</small>
+        </div>
+        <span class="btn-buy closed" aria-disabled="true" title="This event has ended">Sales Closed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticket-note">
+    <div style="font-size:1.4rem;flex-shrink:0;">🎟</div>
+    <p><strong>Ticket sales for 2026 have ended.</strong> Already bought a ticket and have a question? Email <a href="mailto:info@richfest.org">info@richfest.org</a>. For sponsorships, vendors, or VIP inquiries for next year, <a href="mailto:info@richfest.org?subject=R.I.C.H.%20Fest%20Sponsorship">reach out directly</a>. Follow <a href="https://instagram.com/richfestchatt" target="_blank" rel="noopener">@RICHFESTCHATT</a> for next year's announcements.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-eyebrow"><span>2026 Highlights</span></div>
+  <h2 class="section-title">You Had To Be<br>There</h2>
+
+  <div class="gallery-grid">
+    <div class="gallery-cell g-wide">
+      <img src="ct_sign.jpg" alt="CT with R.I.C.H. Fest sign"/>
+    </div>
+    <div class="gallery-cell g-tall">
+      <img loading="lazy" src="grill1.jpg" alt="Community grilling at R.I.C.H. Fest"/>
+    </div>
+    <div class="gallery-cell g-sq">
+      <img loading="lazy" src="sign1.jpg" alt="R.I.C.H. Fest yard sign"/>
+    </div>
+    <div class="gallery-cell g-med">
+      <img loading="lazy" src="sign2.jpg" alt="R.I.C.H. Fest sign close-up"/>
+    </div>
+    <div class="gallery-cell g-sm">
+      <img loading="lazy" src="grill2.jpg" alt="Food at the festival"/>
+    </div>
+    <div class="gallery-cell" style="grid-column:span 6;aspect-ratio:16/9;">
+      <img loading="lazy" src="sign3.jpg" alt="R.I.C.H. Fest outdoor signage"/>
+    </div>
+    <div class="gallery-cell" style="grid-column:span 6;aspect-ratio:16/9;">
+      <img loading="lazy" src="grill3.jpg" alt="Grilling community food"/>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder" id="founder">
+  <div class="section-eyebrow"><span>The Man Behind It</span></div>
+  <h2 class="section-title">Meet the<br>Founder</h2>
+
+  <div class="founder-grid">
+    <div class="founder-img">
+      <img src="ct_sign.jpg" alt="C.T. Torregano, Founder of R.I.C.H. Fest"/>
+      <div class="founder-accent"></div>
+    </div>
+    <div class="founder-text">
+      <div class="founder-name">Richard Christopher<br>"C.T." Torregano</div>
+      <div class="founder-title">Founder · CT Rich Way Productions · Owner, Faded Barber Co.</div>
+      <div class="founder-bio">
+        <p>
+          <strong>C.T. Torregano is a Chattanooga native, entrepreneur, and community philanthropist.</strong> As the owner of Faded Barber Company and the driving force behind CT Rich Way Productions, C.T. has always believed the barbershop is more than a haircut — it's a community.
+        </p>
+        <p>
+          R.I.C.H. Fest is the natural extension of that philosophy. Three days. Four pillars. One community. Each event is hand-crafted to meet the community where it is — from mental health awareness to celebrations of Black joy and culture.
+        </p>
+        <p>
+          <strong>"This is how we enRICH the culture."</strong>
+        </p>
+      </div>
+      <a href="https://instagram.com/richfestchatt" class="btn-primary" target="_blank" rel="noopener">Follow @RICHFESTCHATT</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL STRIP -->
+<div class="social-strip">
+  <div>
+    <h2>Follow the Movement</h2>
+    <p>Stay up to date on performers, ticket drops, and announcements.</p>
+  </div>
+  <a href="https://instagram.com/richfestchatt" target="_blank" rel="noopener">@RICHFESTCHATT on Instagram →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-logo-block">
+      <a class="footer-rich" href="#home">
+        <span class="r">R</span><span class="dot">.</span><span class="i">I</span><span class="dot">.</span><span class="c">C</span><span class="dot">.</span><span class="h">H</span><span class="fest">FEST</span>
+      </a>
+      <p class="footer-tagline">Resilience. Inspiration. Culture. Healing.<br>A CT Rich Way Productions Initiative · Chattanooga, TN</p>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col-title">Festival</p>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#founder">Founder</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col-title">Events</p>
+      <ul>
+        <li><a href="#schedule">Family Wellness Forum</a></li>
+        <li><a href="#schedule">Wild N Krazy Wednesday</a></li>
+        <li><a href="#schedule">Gemini Bash</a></li>
+        <li><a href="mailto:info@richfest.org?subject=Volunteering%20at%20R.I.C.H.%20Fest">Volunteer</a></li>
+        <li><a href="mailto:info@richfest.org?subject=R.I.C.H.%20Fest%20Sponsorship">Sponsor Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col-title">Contact</p>
+      <ul>
+        <li><a href="mailto:info@richfest.org">info@richfest.org</a></li>
+        <li><a href="https://maps.google.com/?q=Chattanooga,+TN" target="_blank" rel="noopener">Chattanooga, TN</a></li>
+        <li><a href="https://instagram.com/richfestchatt">@RICHFESTCHATT</a></li>
+        <li><a href="https://www.instagram.com/explore/tags/richfest2026/" target="_blank" rel="noopener">#RichFest2026</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 R.I.C.H. Fest · CT Rich Way Productions. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://instagram.com/richfestchatt">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<div class="color-bar">
+  <span class="cb-r"></span>
+  <span class="cb-b"></span>
+  <span class="cb-y"></span>
+  <span class="cb-b"></span>
+  <span class="cb-g"></span>
+</div>
+
+</body>
+</html>
